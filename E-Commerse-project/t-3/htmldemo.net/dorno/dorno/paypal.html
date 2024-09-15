@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MyProgrammingBook</title>
+    <link rel="stylesheet" type="text/css" href="paypal.css">
+    <style>
+       * {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.product-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product-image-container {
+    flex: 1;
+    max-width: 400px;
+    margin-right: 20px;
+}
+
+.product-image-container img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.product-info-container {
+    flex: 2;
+}
+
+h1 {
+    font-size: 2em;
+    margin-top: 0;
+    color: #333;
+}
+
+.price {
+    color: #ff5722;
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.product-description {
+    font-size: 1em;
+    color: #666;
+    line-height: 1.6;
+    margin: 20px 0;
+}
+
+.terms {
+    font-size: 0.9em;
+    color: #999;
+}
+
+button {
+    background-color: #ff5722;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    margin: 10px 0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #e64a19;
+}
+
+#paypal-button-container {
+    margin-top: 20px;
+}
+    </style>
+</head>
+<body>
+    <body>
+        <div class="product-container">
+            <div class="product-image-container">
+                <img src="../dorno/assets/img/about/imagepay.png" alt="DORNO Book">
+            </div>
+            <div class="product-info-container">
+                <h1>DORNO</h1>
+                <p class="price" id="amount"></p>
+                <p class="product-description">
+                    At DoRNO, we prioritize your convenience and security, ensuring that your shopping experience is smooth from start to finish. Our payment system is designed to provide you with a range of secure and flexible options, allowing you to choose the method that best suits your needs.
+                </p>
+                <p class="terms">*Terms and Conditions Apply</p>
+                <div id="paypal-button-container"></div>
+                <!-- <button type="button" id="buy-now-button">Buy Now</button> -->
+            </div>
+        </div>
+    
+    <script src="https://www.paypal.com/sdk/js?client-id=Adtb6XkpqqndM80PndrUC19_b7NqNe4BDiNI5b3beOJWq1bUyoPk4QQABWoxFInvtrj3PPuvcU0X24p8&currency=USD"></script>
+    <script>
+        const amont=localStorage.getItem("amountForPay")
+        const UserID=localStorage.getItem("UserId")
+        document.getElementById("amount").innerHTML=amont;
+
+        
+        async function initPayPalButton() {
+    paypal.Buttons({
+        style: {
+            shape: 'rect',
+            color: 'gold',
+            layout: 'vertical',
+            label: 'paypal',
+        },
+
+        createOrder: function (data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        currency_code: "USD",
+                        value: amont
+                    }
+                }]
+            });
+        },
+
+        onApprove: async function (data, actions) {
+            try {
+                const orderData = await actions.order.capture();
+                console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+
+                const paymentData = {
+                    UserId: UserID,
+                    Amount: amont
+                };
+
+                // Call the API using fetch
+                const paymentResponse = await fetch("https://localhost:44362/api/Payment/create-payment", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(paymentData)
+                });
+
+                if (!paymentResponse.ok) {
+                    throw new Error('Payment creation failed');
+                }
+
+                const paymentResult = await paymentResponse.json();
+                console.log('Payment saved successfully', paymentResult);
+
+                // Delay the next operation by 3 seconds
+                await new Promise(resolve => setTimeout(resolve, 3000));
+                console.log("This was delayed by 3 seconds");
+
+                // Create the order
+                await fetch(`https://localhost:44362/api/Order/CreateOrder/${UserID}`, {
+                    method: "POST",
+                });
+
+                // Show a success message
+                const element = document.getElementById('paypal-button-container');
+                element.innerHTML = '<h3>Thank you for your payment!</h3>';
+
+                // Redirect to the my-account page after a short delay
+                setTimeout(function () {
+                    window.location.href = "index.html";
+                }, 2000); // Adjust delay as needed
+
+            } catch (error) {
+                console.error('Error occurred:', error);
+            }
+        },
+
+        onError: function (err) {
+            console.error('PayPal Error:', err);
+        }
+    }).render('#paypal-button-container');
+}
+
+
+        // Initialize PayPal button
+        window.onload = initPayPalButton;
+    </script>
+</body>
+</html>

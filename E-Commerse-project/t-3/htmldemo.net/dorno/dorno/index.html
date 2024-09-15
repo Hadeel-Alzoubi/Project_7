@@ -1,0 +1,1433 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <!-- Mirrored from htmldemo.net/dorno/dorno/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 05 Sep 2024 19:53:31 GMT -->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Dorno – Fashion eCommerce HTML Template</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Favicon -->
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="assets/img/favicon.ico"
+    />
+
+    <!-- Chat Style -->
+    <style>
+      .chat-icon {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #007bff;
+      color: white;
+      padding: 10px;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 1000;
+  }
+  
+  .chat-icon i {
+      font-size: 24px;
+  }
+  
+  .chat-box {
+      display: none;
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 300px;
+      max-height: 400px;
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      z-index: 1000;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+  }
+  
+  .chat-header {
+      background-color: #007bff;
+      color: white;
+      padding: 10px;
+      border-radius: 10px 10px 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+  
+  .chat-body {
+      padding: 10px;
+      overflow-y: auto;
+      flex: 1;
+      background-color: #f5f5f5;
+  }
+  
+  .chat-footer {
+      padding: 10px;
+      background-color: white;
+      border-top: 1px solid #ccc;
+      display: flex;
+  }
+  
+  #chat-input {
+      flex: 1;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+  }
+  
+  #send-btn {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      margin-left: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+  
+  .close-chat {
+      cursor: pointer;
+      font-size: 24px;
+  }
+  
+  .new-message {
+      background-color: red !important;
+      animation: pulse 1s infinite;
+  }
+  
+  @keyframes pulse {
+      0% {
+          transform: scale(1);
+      }
+      50% {
+          transform: scale(1.1);
+      }
+      100% {
+          transform: scale(1);
+      }
+  }
+  
+  @media (max-width: 768px) {
+      .chat-box {
+          width: 90%;
+          right: 5%;
+      }
+  }
+  </style>
+    <!-- CSS 
+    ========================= -->
+    <!--bootstrap min css-->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <!--owl carousel min css-->
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
+    <!--slick min css-->
+    <link rel="stylesheet" href="assets/css/slick.css" />
+    <!--magnific popup min css-->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css" />
+    <!--font awesome css-->
+    <link rel="stylesheet" href="assets/css/font.awesome.css" />
+    <!--ionicons min css-->
+    <link rel="stylesheet" href="assets/css/ionicons.min.css" />
+    <!--animate css-->
+    <link rel="stylesheet" href="assets/css/animate.css" />
+    <!--jquery ui min css-->
+    <link rel="stylesheet" href="assets/css/jquery-ui.min.css" />
+    <!--slinky menu css-->
+    <link rel="stylesheet" href="assets/css/slinky.menu.css" />
+    <!--plugins css-->
+    <link rel="stylesheet" href="assets/css/plugins.css" />
+
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <!--modernizr min js here-->
+    <script src="assets/js/vendor/modernizr-3.7.1.min.js"></script>
+
+
+    <style>
+
+.user-message {
+        background-color: #f1f1f1;
+        padding: 10px;
+        margin: 5px;
+        border-radius: 10px;
+        text-align: right;
+      }
+
+      .admin-message {
+        background-color: gray;
+        color: white;
+        padding: 10px;
+        margin: 5px;
+        border-radius: 10px;
+        text-align: left;
+      }
+
+      .chat-box {
+        width: 500px;
+        height: 500px;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .chat-header {
+        background-color: #F53737;
+        color: white;
+        padding: 10px;
+        border-radius: 10px 10px 0 0;
+        text-align: center;
+      }
+
+      .chat-body {
+        padding: 10px;
+        overflow-y: auto;
+        flex: 1;
+        background-color: #f5f5f5;
+      }
+
+      .chat-footer {
+        padding: 10px;
+        background-color: white;
+        border-top: 1px solid #ccc;
+        display: flex;
+      }
+
+      #send-input {
+        flex: 1;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+
+      #send-btn {
+        background-color: #F53737;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        margin-left: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+
+   <!--header area start-->
+    
+   <header>
+    <div class="main_header sticky-header">
+      <div class="container-fluid">
+        <div class="header_container">
+          <div class="row align-items-center">
+            <div class="col-lg-2">
+              <div class="logo">
+                <a href="index.html"
+                  ><img src="assets/img/logo/logo.png" alt=""
+                /></a>
+              </div>
+            </div>
+            <div class="col-lg-8">
+              <!--main menu start-->
+              <div class="main_menu menu_position">
+                <nav>
+                  <ul>
+                    <li>
+                      <a class="active" href="index.html"
+                        >home</i
+                      ></a>
+                    </li>
+                    <li class="mega_items">
+                      <a href="shop.html"
+                        >shop</a>
+                     
+                    </li>
+                    <li>
+                      <a href="blog-sidebar.html"
+                        >blog</a>
+                    </li>
+                    <li>
+                      <a href="#">Show More <i class="fa fa-angle-down"></i></a>
+                      <ul class="sub_menu pages"> 
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="faq.html">Frequently Questions</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="contact.html"> Contact Us</a></li>
+                    <li><a href="my-account.html" id="userAccount">My account</a></li>
+                  </ul>
+                </nav>
+              </div>
+              <!--main menu end-->
+            </div>
+            <div class="col-lg-2">
+              <div class="header_account_area">
+               
+                <div class="header_account-list mini_cart_wrapper">
+                  <a href="javascript:void(0)"
+                    ><i class="icon icon-FullShoppingCart"></i
+                    ><span class="item_count" id="numberOfSelectedItems"></span></a
+                  >
+                  <!--mini cart-->
+                  <div class="mini_cart" >
+                    <div class="cart_gallery" id="cartGallery">
+                      
+                    </div>
+                   
+                    <div class="mini_cart_footer">
+                      <div class="cart_button">
+                        <a href="cart.html"
+                          ><i class="fa fa-shopping-cart"></i> View cart</a
+                        >
+                      </div>
+                      
+                    </div>
+                  </div>
+                  <!--mini cart end-->
+                </div>
+                <div class="header_account-list " >
+                  <a href="/batool/login.html" class="btn " id="login">Login</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!--header area end-->
+
+    <!--slider area start-->
+    <section class="slider_section mb-30">
+      <div class="slider_area owl-carousel">
+        <div
+          class="single_slider d-flex align-items-center"
+          data-bgimg="assets/img/slider/slider1.jpg"
+        >
+          <div class="container">
+            <div class="row">
+              <div class="col-12">
+                <div class="slider_content">
+                  <h3>Top Selling!</h3>
+                  <h1>
+                    The New <br />
+                    Collection
+                  </h1>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  </p>
+                  <a class="button" href="shop.html">Read more</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="single_slider d-flex align-items-center"
+          data-bgimg="assets/img/slider/slider2.jpg"
+        >
+          <div class="container">
+            <div class="row">
+              <div class="col-12">
+                <div class="slider_content">
+                  <h3>Best Selling!</h3>
+                  <h1>
+                    The Top <br />
+                    Collection
+                  </h1>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  </p>
+                  <a class="button" href="shop.html">Read more</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--slider area end-->
+
+    <!--banner area start-->
+    <div class="banner_area home1_banner mb-95">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-6">
+            <figure class="single_banner">
+              <div class="banner_thumb">
+                <a href="shop.html"
+                  ><img src="assets/img/bg/banner1.jpg" alt=""
+                /></a>
+              </div>
+            </figure>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+            <figure class="single_banner">
+              <div class="banner_thumb">
+                <a href="shop.html"
+                  ><img src="assets/img/bg/banner2.jpg" alt=""
+                /></a>
+              </div>
+            </figure>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-6">
+            <figure class="single_banner">
+              <div class="banner_thumb">
+                <a href="shop.html"
+                  ><img src="assets/img/bg/banner3.jpg" alt=""
+                /></a>
+              </div>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--banner area end-->
+
+    <!--product area start-->
+    <div class="product_area mb-95">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="product_header">
+              <div class="section_title">
+                <h2>Our <span>Clothing Categories</span></h2>
+                <p>
+                  Explore a diverse range of clothing categories, from stylish
+                  hoodies and jackets to elegant dresses and durable footwear.
+                  Find the perfect fit for every occasion and season.
+                </p>
+              </div>
+              <div class="product_tab_btn">
+                <ul class="nav" role="tablist" id="CategorySectionHome">
+                  <li>
+                    <a
+                      class="active"
+                      data-bs-toggle="tab"
+                      href="#classic"
+                      role="tab"
+                      aria-controls="classic"
+                      aria-selected="true"
+                      onclick="getAllProducts()"
+                    >
+                      All Category
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <img src="/assets/img/product/" alt="" />
+        <div class="tab-content">
+          <div class="tab-pane fade show active" id="classic" role="tabpanel">
+            <div class="row">
+              <div class="product_carousel product_column4 owl-carousel"></div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="display" role="tabpanel">
+            <div class="row">
+              <div class="product_carousel product_column4 owl-carousel"></div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="processor" role="tabpanel">
+            <div class="row">
+              <div
+                class="product_carousel product_column4 owl-carousel"
+                id="product_carousel_ShowProduct"
+              ></div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="accessories" role="tabpanel">
+            <div class="row">
+              <div class="product_carousel product_column4 owl-carousel"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--product area end-->
+
+    <!--product area start-->
+    <div class="product_area mb-100">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="section_title">
+              <h2>Best <span>seller</span></h2>
+              <p>Lorem ipsum dolor sit amet, consectetur elit.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="product_carousel product_column4 owl-carousel"></div>
+        </div>
+      </div>
+    </div>
+    <!--product area end-->
+
+    <!--testimonial area start-->
+    <div class="testimonial_area">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-5 col-md-12">
+            <div class="section_title testileft_title">
+              <p>Welcome to my personal presentation</p>
+              <h2>What our <span>Clients say</span></h2>
+            </div>
+          </div>
+          <div class="col-lg-7 col-md-12">
+            <div class="testimonial_container">
+              <div
+                class="testimonial_carousel testimonial_column1 owl-carousel"
+              >
+                <div class="single-testimonial">
+                  <div class="testimonial_thumb">
+                    <a href="#"
+                      ><img src="assets/img/about/testimonial1.png" alt=""
+                    /></a>
+                  </div>
+                  <div class="testimonial_content">
+                    <div class="testimonial-rating">
+                      <ul>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                      </ul>
+                    </div>
+                    <p>
+                      “ Perfect Themes and the best of all that you have many
+                      options to choose! Best Support team ever!Very fast
+                      responding and experts on their fields! Thank you very
+                      much! ”
+                    </p>
+
+                    <div class="testimonial_author">
+                      <a href="#">- Lindsy Neloms</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="single-testimonial">
+                  <div class="testimonial_thumb">
+                    <a href="#"
+                      ><img src="assets/img/about/testimonial2.png" alt=""
+                    /></a>
+                  </div>
+                  <div class="testimonial_content">
+                    <div class="testimonial-rating">
+                      <ul>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                      </ul>
+                    </div>
+                    <p>
+                      “ Perfect Themes and the best of all that you have many
+                      options to choose! Best Support team ever!Very fast
+                      responding and experts on their fields! Thank you very
+                      much! ”
+                    </p>
+
+                    <div class="testimonial_author">
+                      <a href="#">- Rebecka Filson</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="single-testimonial">
+                  <div class="testimonial_thumb">
+                    <a href="#"
+                      ><img src="assets/img/about/testimonial3.png" alt=""
+                    /></a>
+                  </div>
+                  <div class="testimonial_content">
+                    <div class="testimonial-rating">
+                      <ul>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                      </ul>
+                    </div>
+                    <p>
+                      “ Perfect Themes and the best of all that you have many
+                      options to choose! Best Support team ever!Very fast
+                      responding and experts on their fields! Thank you very
+                      much! ”
+                    </p>
+
+                    <div class="testimonial_author">
+                      <a href="#">- Amber Laha</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="single-testimonial">
+                  <div class="testimonial_thumb">
+                    <a href="#"
+                      ><img src="assets/img/about/testimonial1.png" alt=""
+                    /></a>
+                  </div>
+                  <div class="testimonial_content">
+                    <div class="testimonial-rating">
+                      <ul>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                      </ul>
+                    </div>
+                    <p>
+                      “ Perfect Themes and the best of all that you have many
+                      options to choose! Best Support team ever!Very fast
+                      responding and experts on their fields! Thank you very
+                      much! ”
+                    </p>
+
+                    <div class="testimonial_author">
+                      <a href="#">- Lindsy Neloms</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="single-testimonial">
+                  <div class="testimonial_thumb">
+                    <a href="#"
+                      ><img src="assets/img/about/testimonial2.png" alt=""
+                    /></a>
+                  </div>
+                  <div class="testimonial_content">
+                    <div class="testimonial-rating">
+                      <ul>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                      </ul>
+                    </div>
+                    <p>
+                      “ Perfect Themes and the best of all that you have many
+                      options to choose! Best Support team ever!Very fast
+                      responding and experts on their fields! Thank you very
+                      much! ”
+                    </p>
+
+                    <div class="testimonial_author">
+                      <a href="#">- Rebecka Filson</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="single-testimonial">
+                  <div class="testimonial_thumb">
+                    <a href="#"
+                      ><img src="assets/img/about/testimonial3.png" alt=""
+                    /></a>
+                  </div>
+                  <div class="testimonial_content">
+                    <div class="testimonial-rating">
+                      <ul>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="icon icon-Star"></i></a>
+                        </li>
+                      </ul>
+                    </div>
+                    <p>
+                      “ Perfect Themes and the best of all that you have many
+                      options to choose! Best Support team ever!Very fast
+                      responding and experts on their fields! Thank you very
+                      much! ”
+                    </p>
+
+                    <div class="testimonial_author">
+                      <a href="#">- Amber Laha</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--testimonial area end-->
+
+    <!--blog area start-->
+    <section class="blog_section">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="section_title">
+              <h2>Latest <span>Blog Posts</span></h2>
+              <p>There are latest blogs posts</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="blog_carousel blog_column3 owl-carousel">
+            <div class="col-lg-3">
+              <article class="single_blog">
+                <figure>
+                  <div class="blog_thumb">
+                    <a href="blog-details.html"
+                      ><img src="assets/img/blog/blog1.jpg" alt=""
+                    /></a>
+                  </div>
+                  <figcaption class="blog_content">
+                    <h4 class="post_title">
+                      <a href="blog-details.html"
+                        >Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit.
+                      </a>
+                    </h4>
+                    <div class="articles_date">
+                      <span
+                        ><i class="fa fa-calendar" aria-hidden="true"></i>
+                        04/08/2023</span
+                      >
+                      <span
+                        ><i class="fa fa-user" aria-hidden="true"></i> eCommerce
+                        Themes</span
+                      >
+                    </div>
+                    <p class="post_desc">
+                      Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras
+                      pretium arcu ex. Aenean posuere libero eu augue
+                      condimentum rhoncus praesent
+                    </p>
+                    <a href="#">+ Read More</a>
+                  </figcaption>
+                </figure>
+              </article>
+            </div>
+            <div class="col-lg-3">
+              <article class="single_blog">
+                <figure>
+                  <div class="blog_thumb">
+                    <a href="blog-details.html"
+                      ><img src="assets/img/blog/blog2.jpg" alt=""
+                    /></a>
+                  </div>
+                  <figcaption class="blog_content">
+                    <h4 class="post_title">
+                      <a href="blog-details.html">
+                        est ad quia aperiam unde quam hic, quae optio quis.</a
+                      >
+                    </h4>
+                    <div class="articles_date">
+                      <span
+                        ><i class="fa fa-calendar" aria-hidden="true"></i>
+                        04/08/2023</span
+                      >
+                      <span
+                        ><i class="fa fa-user" aria-hidden="true"></i> eCommerce
+                        Themes</span
+                      >
+                    </div>
+                    <p class="post_desc">
+                      Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras
+                      pretium arcu ex. Aenean posuere libero eu augue
+                      condimentum rhoncus praesent
+                    </p>
+                    <a href="#">+ Read More</a>
+                  </figcaption>
+                </figure>
+              </article>
+            </div>
+            <div class="col-lg-3">
+              <article class="single_blog">
+                <figure>
+                  <div class="blog_thumb">
+                    <a href="blog-details.html"
+                      ><img src="assets/img/blog/blog3.jpg" alt=""
+                    /></a>
+                  </div>
+                  <figcaption class="blog_content">
+                    <h4 class="post_title">
+                      <a href="blog-details.html">
+                        Aut doloremque, optio optio delectus est quae molestiae.
+                      </a>
+                    </h4>
+                    <div class="articles_date">
+                      <span
+                        ><i class="fa fa-calendar" aria-hidden="true"></i>
+                        04/08/2023</span
+                      >
+                      <span
+                        ><i class="fa fa-user" aria-hidden="true"></i> eCommerce
+                        Themes</span
+                      >
+                    </div>
+                    <p class="post_desc">
+                      Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras
+                      pretium arcu ex. Aenean posuere libero eu augue
+                      condimentum rhoncus praesent
+                    </p>
+                    <a href="#">+ Read More</a>
+                  </figcaption>
+                </figure>
+              </article>
+            </div>
+            <div class="col-lg-3">
+              <article class="single_blog">
+                <figure>
+                  <div class="blog_thumb">
+                    <a href="blog-details.html"
+                      ><img src="assets/img/blog/blog4.jpg" alt=""
+                    /></a>
+                  </div>
+                  <figcaption class="blog_content">
+                    <h4 class="post_title">
+                      <a href="blog-details.html"
+                        >est ad quia aperiam unde quam hic, quae optio quis.
+                      </a>
+                    </h4>
+                    <div class="articles_date">
+                      <span
+                        ><i class="fa fa-calendar" aria-hidden="true"></i>
+                        04/08/2023</span
+                      >
+                      <span
+                        ><i class="fa fa-user" aria-hidden="true"></i> eCommerce
+                        Themes</span
+                      >
+                    </div>
+                    <p class="post_desc">
+                      Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras
+                      pretium arcu ex. Aenean posuere libero eu augue
+                      condimentum rhoncus praesent
+                    </p>
+                    <a href="#">+ Read More</a>
+                  </figcaption>
+                </figure>
+              </article>
+            </div>
+            <div class="col-lg-3">
+              <article class="single_blog">
+                <figure>
+                  <div class="blog_thumb">
+                    <a href="blog-details.html"
+                      ><img src="assets/img/blog/blog5.jpg" alt=""
+                    /></a>
+                  </div>
+                  <figcaption class="blog_content">
+                    <h4 class="post_title">
+                      <a href="blog-details.html"
+                        >Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit.
+                      </a>
+                    </h4>
+                    <div class="articles_date">
+                      <span
+                        ><i class="fa fa-calendar" aria-hidden="true"></i>
+                        04/08/2023</span
+                      >
+                      <span
+                        ><i class="fa fa-user" aria-hidden="true"></i> eCommerce
+                        Themes</span
+                      >
+                    </div>
+                    <p class="post_desc">
+                      Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras
+                      pretium arcu ex. Aenean posuere libero eu augue
+                      condimentum rhoncus praesent
+                    </p>
+                    <a href="#">+ Read More</a>
+                  </figcaption>
+                </figure>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--blog area end-->
+
+    <!--newsletter area start-->
+    <div class="newsletter_area_start">
+      <div class="container">
+        <div class="newsletter_container">
+          <div class="row">
+            <div class="col-12">
+              <div class="section_title">
+                <h2>Sign <span>Up For Latest News</span></h2>
+                <p>Newsletter</p>
+              </div>
+              <div class="subscribe_form">
+                <form id="mc-form" class="mc-form footer-newsletter">
+                  <input
+                    id="mc-email"
+                    type="email"
+                    autocomplete="off"
+                    placeholder="Please enter your email to subscribe"
+                  />
+                  <button id="mc-submit">Subscribe</button>
+                  <div class="email_icon">
+                    <i class="icon-mail"></i>
+                  </div>
+                </form>
+                <!-- mailchimp-alerts Start -->
+                <div class="mailchimp-alerts text-centre">
+                  <div class="mailchimp-submitting"></div>
+                  <!-- mailchimp-submitting end -->
+                  <div class="mailchimp-success"></div>
+                  <!-- mailchimp-success end -->
+                  <div class="mailchimp-error"></div>
+                  <!-- mailchimp-error end -->
+                </div>
+                <!-- mailchimp-alerts end -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--newsletter area end-->
+
+    <!--footer area start-->
+    <footer class="footer_widgets">
+      <div class="footer_top">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3 col-md-8 col-sm-8">
+              <div class="widgets_container footer_contact">
+                <h3>About us</h3>
+                <p>
+                  We are a team of designers and developers that create high
+                  quality HTML Template, Woocommerce, Shopify Theme.
+                </p>
+                <p>
+                  <i class="icon icon-Pointer"></i> The Barn, Ullenhall, Henley
+                  in Arden B578 5CC, England
+                </p>
+                <p>
+                  <i class="icon icon-Phone"></i>
+                  <a href="tel:+123.456.789">+123.456.789</a> -
+                  <a href="tel:+123.456.678">+123.456.678</a>
+                </p>
+                <p>
+                  <i class="icon icon-Mail"></i>
+                  <a href="https://hasthemes.com/contact-us/"
+                    >https://hasthemes.com/contact-us/</a
+                  >
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-4">
+              <div class="widgets_container widget_menu">
+                <h3>Information</h3>
+                <div class="footer_menu">
+                  <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Delivery Information</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="contact.html">Contact us</a></li>
+                    <li><a href="#">Returns</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+              <div class="widgets_container footer-linkup">
+                <h3>Our Twitter Feed</h3>
+                <p>
+                  Check out "Alice - Multipurpose Responsive #Magento #Theme" on
+                  <br />
+                  #Envato by <a href="#">@Plazathemes</a> <br />
+                  #Themeforest <a href="#">https://t.co/DNdhAwzm88</a>
+                </p>
+                <p>
+                  Check Out "Emos - Multi Store Responsive #Magento #Theme" on
+                  #Envato by <br />
+                  <a href="#">@Plazathemes</a> #Themeforest
+                  <a href="#">https://t.co/08oCVAr5dy</a>
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-10">
+              <div class="widgets_container footer_instragam">
+                <h3>instagram</h3>
+                <div class="instagram_container">
+                  <div class="instagram_thumb">
+                    <a href="#"
+                      ><img src="assets/img/about/instragam1.jpg" alt=""
+                    /></a>
+                    <div class="instagram_boxcmt">
+                      <span class="likecount">5</span>
+                      <span class="commentcount">1</span>
+                    </div>
+                  </div>
+                  <div class="instagram_thumb">
+                    <a href="#"
+                      ><img src="assets/img/about/instragam2.jpg" alt=""
+                    /></a>
+                    <div class="instagram_boxcmt">
+                      <span class="likecount">5</span>
+                      <span class="commentcount">1</span>
+                    </div>
+                  </div>
+                  <div class="instagram_thumb">
+                    <a href="#"
+                      ><img src="assets/img/about/instragam3.jpg" alt=""
+                    /></a>
+                    <div class="instagram_boxcmt">
+                      <span class="likecount">5</span>
+                      <span class="commentcount">1</span>
+                    </div>
+                  </div>
+                  <div class="instagram_thumb">
+                    <a href="#"
+                      ><img src="assets/img/about/instragam4.jpg" alt=""
+                    /></a>
+                    <div class="instagram_boxcmt">
+                      <span class="likecount">5</span>
+                      <span class="commentcount">1</span>
+                    </div>
+                  </div>
+                  <div class="instagram_thumb">
+                    <a href="#"
+                      ><img src="assets/img/about/instragam5.jpg" alt=""
+                    /></a>
+                    <div class="instagram_boxcmt">
+                      <span class="likecount">5</span>
+                      <span class="commentcount">1</span>
+                    </div>
+                  </div>
+                  <div class="instagram_thumb">
+                    <a href="#"
+                      ><img src="assets/img/about/instragam2.jpg" alt=""
+                    /></a>
+                    <div class="instagram_boxcmt">
+                      <span class="likecount">5</span>
+                      <span class="commentcount">1</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer_bottom">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6 col-md-6">
+              <div class="copyright_area">
+                <p>
+                  Copyright &copy; 2021 <a href="#">Dorno</a> All Right
+                  Reserved.
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+              <div class="footer_social">
+                <ul>
+                  <li>
+                    <a href="#"><i class="ion-social-facebook"></i></a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="ion-social-twitter"></i></a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="ion-social-googleplus"></i></a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="ion-social-youtube-outline"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!--footer area end-->
+
+    <div class="modal fade" id="modal_box" tabindex="-1" role="dialog"  aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true"><i class="ion-android-close"></i></span>
+              </button>
+              <div class="modal_body">
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-lg-5 col-md-5 col-sm-12">
+                              <div class="modal_tab">  
+                                  <div class="tab-content product-details-large">
+                                      <div class="tab-pane fade show active" id="tab1" role="tabpanel" >
+                                          <div class="modal_tab_img">
+                                              <a href="#"><img src="assets/img/product/productbig1.jpg" alt=""></a>    
+                                          </div>
+                                      </div>
+                                      <div class="tab-pane fade" id="tab2" role="tabpanel">
+                                          <div class="modal_tab_img">
+                                              <a href="#"><img src="assets/img/product/productbig2.jpg" alt=""></a>    
+                                          </div>
+                                      </div>
+                                      <div class="tab-pane fade" id="tab3" role="tabpanel">
+                                          <div class="modal_tab_img">
+                                              <a href="#"><img src="assets/img/product/productbig3.jpg" alt=""></a>    
+                                          </div>
+                                      </div>
+                                      <div class="tab-pane fade" id="tab4" role="tabpanel">
+                                          <div class="modal_tab_img">
+                                              <a href="#"><img src="assets/img/product/productbig4.jpg" alt=""></a>    
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="modal_tab_button">    
+                                      <ul class="nav product_navactive owl-carousel" role="tablist">
+                                          <li >
+                                              <a class="nav-link active" data-bs-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="false"><img src="assets/img/product/product1.jpg" alt=""></a>
+                                          </li>
+                                          <li>
+                                               <a class="nav-link" data-bs-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false"><img src="assets/img/product/product2.jpg" alt=""></a>
+                                          </li>
+                                          <li>
+                                             <a class="nav-link button_three" data-bs-toggle="tab" href="#tab3" role="tab" aria-controls="tab3" aria-selected="false"><img src="assets/img/product/product3.jpg" alt=""></a>
+                                          </li>
+                                          <li>
+                                             <a class="nav-link" data-bs-toggle="tab" href="#tab4" role="tab" aria-controls="tab4" aria-selected="false"><img src="assets/img/product/product8.jpg" alt=""></a>
+                                          </li>
+
+                                      </ul>
+                                  </div>    
+                              </div>  
+                          </div> 
+                          <div class="col-lg-7 col-md-7 col-sm-12">
+                              <div class="modal_right">
+                                  <div class="modal_title mb-10">
+                                      <h2>Donec Ac Tempus</h2> 
+                                  </div>
+                                  <div class="modal_price mb-10">
+                                      <span class="new_price">$64.99</span>    
+                                      <span class="old_price" >$78.99</span>    
+                                  </div>
+                                  <div class="modal_description mb-15">
+                                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia iste laborum ad impedit pariatur esse optio tempora sint ullam autem deleniti nam in quos qui nemo ipsum numquam, reiciendis maiores quidem aperiam, rerum vel recusandae </p>    
+                                  </div> 
+                                  <div class="variants_selects">
+                                      <div class="variants_size">
+                                         <h2>size</h2>
+                                         <select class="select_option">
+                                             <option selected value="1">s</option>
+                                             <option value="1">m</option>
+                                             <option value="1">l</option>
+                                             <option value="1">xl</option>
+                                             <option value="1">xxl</option>
+                                         </select>
+                                      </div>
+                                      <div class="variants_color">
+                                         <h2>color</h2>
+                                         <select class="select_option">
+                                             <option selected value="1">purple</option>
+                                             <option value="1">violet</option>
+                                             <option value="1">black</option>
+                                             <option value="1">pink</option>
+                                             <option value="1">orange</option>
+                                         </select>
+                                      </div>
+                                      <div class="modal_add_to_cart">
+                                          <form action="#">
+                                              <input min="1" max="100" step="2" value="1" type="number">
+                                              <button type="submit">add to cart</button>
+                                          </form>
+                                      </div>   
+                                  </div>
+                                  <div class="modal_social">
+                                      <h2>Share this product</h2>
+                                      <ul>
+                                          <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                          <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                          <li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                          <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                          <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                      </ul>    
+                                  </div>      
+                              </div>    
+                          </div>    
+                      </div>     
+                  </div>
+              </div>    
+          </div>
+      </div>
+  </div>
+
+
+    <!--news letter popup start-->
+    <div class="newletter-popup">
+      <div id="boxes" class="newletter-container">
+        <div id="dialog" class="window">
+          <div id="popup2">
+            <span class="b-close"><span>close</span></span>
+          </div>
+          <div class="box">
+            <div class="newletter-title">
+              <h2>Newsletter</h2>
+            </div>
+            <div class="box-content newleter-content">
+              <label class="newletter-label"
+                >Enter your email address to subscribe our notification of our
+                new post &amp; features by email.</label
+              >
+              <div id="frm_subscribe">
+                <form name="subscribe" id="subscribe_popup">
+                  <!-- <span class="required">*</span><span>Enter you email address here...</span>-->
+                  <input
+                    type="text"
+                    value=""
+                    name="subscribe_pemail"
+                    id="subscribe_pemail"
+                    placeholder="Enter you email address here..."
+                  />
+                  <input
+                    type="hidden"
+                    value=""
+                    name="subscribe_pname"
+                    id="subscribe_pname"
+                  />
+                  <div id="notification"></div>
+                  <a class="theme-btn-outlined" onclick="email_subscribepopup()"
+                    ><span>Subscribe</span></a
+                  >
+                </form>
+                <div class="subscribe-bottom">
+                  <input
+                    type="checkbox"
+                    id="newsletter_popup_dont_show_again"
+                  />
+                  <label for="newsletter_popup_dont_show_again"
+                    >Don't show this popup again</label
+                  >
+                </div>
+              </div>
+              <!-- /#frm_subscribe -->
+            </div>
+            <!-- /.box-content -->
+          </div>
+        </div>
+      </div>
+      <!-- /.box -->
+    </div>
+    
+    <!--news letter popup start-->
+<!-- Chat Div -->
+<div class="chat-icon" id="chat-icon">
+  <i class="fa fa-comments"></i>
+</div>
+
+<!-- نافذة الـ Chat -->
+<div class="chat-box" id="chat-box">
+  <div class="chat-header">
+      <h4>Messages</h4>
+      <span id="close-chat" class="close-chat">&times;</span>
+  </div>
+  <div class="chat-body" id="chat-body">
+      <!-- الرسائل سيتم تحميلها هنا -->
+  </div>
+  <div class="chat-footer">
+      <input type="text" id="chat-input" placeholder="Type a message..." />
+      <button id="send-btn">Send</button>
+  </div>
+</div>
+
+
+    <!-- Chat Script -->
+    <script>
+      let userId = localStorage.getItem("UserId"); // ضع هنا الـ userId الخاص بالمستخدم
+      let updateInterval; // متغير للتحكم في التحديث الدوري للرسائل
+
+      // فتح نافذة الـ Chat والبدء بتحميل الرسائل
+      document.getElementById('chat-icon').addEventListener('click', function () {
+          document.getElementById('chat-box').style.display = 'flex';
+          loadMessages(); // تحميل الرسائل عند الفتح
+          startPolling(); // بدء التحديث التلقائي
+      });
+
+      // إغلاق نافذة الـ Chat وإيقاف التحديث التلقائي
+      document.getElementById('close-chat').addEventListener('click', function () {
+          document.getElementById('chat-box').style.display = 'none';
+          stopPolling(); // إيقاف التحديث التلقائي
+      });
+
+      // تحميل الرسائل من الـ API
+      async function loadMessages() {
+          try {
+              const response = await fetch(`https://localhost:44362/api/Chat/showMessage/${userId}`);
+              const messages = await response.json();
+              const chatBody = document.getElementById('chat-body');
+              chatBody.innerHTML = ''; // تنظيف الرسائل الحالية
+
+              messages.forEach(message => {
+                var msgElement = document.createElement("div");
+      msgElement.textContent = message.cmessages;
+      msgElement.className = "message"; // Add general message class
+
+      // Check flag value to determine the sender
+      if (message.flag === 1) {
+        msgElement.className += " admin-message"; // Admin message (right side)
+      } else {
+        msgElement.className += " user-message"; // User message (left side)
+      }
+
+      chatBody.appendChild(msgElement);
+              });
+          } catch (error) {
+              console.error('Error loading messages:', error);
+          }
+      }
+
+      // إرسال رسالة جديدة إلى الـ API
+      document.getElementById('send-btn').addEventListener('click', async function () {
+        debugger;
+          const messageContent = document.getElementById('chat-input').value;
+
+          if (!messageContent) return; // التأكد من أن الرسالة ليست فارغة
+
+          try {
+              const response = await fetch(`https://localhost:44362/api/Chat/replayMessage/${userId}`, {
+                  method: 'POST',
+                  body: new URLSearchParams({
+                      'Cmessages': messageContent,
+                      'Flag': 0
+                  }),
+                  headers: {
+                      'Content-Type': 'application/x-www-form-urlencoded'
+                  }
+              });
+
+              document.getElementById('chat-input').value = ''; // تفريغ الحقل بعد الإرسال
+              loadMessages(); // إعادة تحميل الرسائل بعد الإرسال
+          } catch (error) {
+              console.error('Error sending message:', error);
+          }
+      });
+
+      // بدء التحديث التلقائي (Polling) كل 5 ثوانٍ
+      function startPolling() {
+          updateInterval = setInterval(loadMessages, 5000); // تحميل الرسائل كل 5 ثوانٍ
+      }
+
+      // إيقاف التحديث التلقائي عند إغلاق الـ Chat
+      function stopPolling() {
+          clearInterval(updateInterval);
+      }
+      loadMessages();
+  </script>
+    <!-- JS
+============================================ -->
+    <!--jquery min js-->
+    <script src="assets/js/vendor/jquery-3.4.1.min.js"></script>
+    <!--popper min js-->
+    <script src="assets/js/popper.js"></script>
+    <!--bootstrap min js-->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!--owl carousel min js-->
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <!--slick min js-->
+    <script src="assets/js/slick.min.js"></script>
+    <!--magnific popup min js-->
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <!--counterup min js-->
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <!--jquery countdown min js-->
+    <script src="assets/js/jquery.countdown.js"></script>
+    <!--jquery ui min js-->
+    <script src="assets/js/jquery.ui.js"></script>
+    <!--jquery elevatezoom min js-->
+    <script src="assets/js/jquery.elevatezoom.js"></script>
+    <!--isotope packaged min js-->
+    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <!--slinky menu js-->
+    <script src="assets/js/slinky.menu.js"></script>
+    <!-- Plugins JS -->
+    <script src="assets/js/plugins.js"></script>
+
+    <script src="JavaScript/homePage.js"></script>
+    <!-- Main JS -->
+    <script src="assets/js/main.js"></script>
+    <script src="JavaScript/navebar.js"></script>
+     
+    <script src="JavaScript/miniCart.js"></script>
+  </body>
+
+  <!-- Mirrored from htmldemo.net/dorno/dorno/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 05 Sep 2024 19:54:03 GMT -->
+</html>

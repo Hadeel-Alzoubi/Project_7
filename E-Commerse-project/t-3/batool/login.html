@@ -1,0 +1,239 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <!-- Mirrored from htmldemo.net/dorno/dorno/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 05 Sep 2024 19:54:38 GMT -->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Dorno - login</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Favicon -->
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="assets/img/favicon.ico"
+    />
+
+    <!-- CSS 
+    ========================= -->
+    <!--bootstrap min css-->
+    <link rel="stylesheet" href="/htmldemo.net/dorno/dorno/assets/css/bootstrap.min.css" />
+    <!--owl carousel min css-->
+    <link rel="stylesheet" href="/htmldemo.net/dorno/dorno/assets/css/owl.carousel.min.css" />
+    <!--slick min css-->
+    <link rel="stylesheet" href="/htmldemo.net/dorno/dorno/assets/css/slick.css" />
+    <!--magnific popup min css-->
+    <link rel="stylesheet" href="/htmldemo.net/dorno/dorno/assets/css/magnific-popup.css" />
+    <!--font awesome css-->
+    <link rel="stylesheet" href="/htmldemo.net/dorno/dorno/assets/css/font.awesome.css" />
+    <!--ionicons min css-->
+    <link rel="stylesheet" href="/htmldemo.net/dorno/dorno/assets/css/ionicons.min.css" />
+    <!--animate css-->
+    <link rel="stylesheet" href="/htmldemo.net/dorno/dorno/assets/css/animate.css" />
+    <!--jquery ui min css-->
+    <link rel="stylesheet" href="/htmldemo.net/dorno/dorno/assets/css/jquery-ui.min.css" />
+    <!--slinky menu css-->
+    <link rel="stylesheet" href="/htmldemo.net/dorno/dorno/assets/css/slinky.menu.css" />
+    <!--plugins css-->
+    <link rel="stylesheet" href="/htmldemo.net/dorno/dorno/assets/css/plugins.css" />
+
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="/htmldemo.net/dorno/dorno/assets/css/style.css" />
+
+    <!--modernizr min js here-->
+    <script src="/htmldemo.net/dorno/dorno/assets/js/vendor/modernizr-3.7.1.min.js"></script>
+
+    <style>
+      .login-btn {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.google-button {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login-btn:hover, .google-button:hover {
+    background-color: #d32f2f;
+}
+
+    </style>
+  </head>
+  <body>
+       <!--header area start-->
+    <header>
+        <div class="main_header sticky-header">
+          <div class="container-fluid">
+            <div class="header_container">
+              <div class="row align-items-center">
+                <div class="col-lg-2">
+                  <div class="logo">
+                    <a href="/htmldemo.net/dorno/dorno/index.html"
+                      ><img src="assets/img/logo/logo.png" alt=""
+                    /></a>
+                  </div>
+                </div>
+                <div class="col-lg-8">
+                  <!--main menu start-->
+                  <div class="main_menu menu_position">
+                    <nav>
+                      <ul>
+                        <li>
+                          <a class="active" href="/htmldemo.net/dorno/dorno/index.html"
+                            >home</i
+                          ></a>
+                        </li>
+                        <li class="mega_items">
+                          <a href="/htmldemo.net/dorno/dorno/shop.html"
+                            >shop</a>
+                         
+                        </li>
+                        <li>
+                          <a href="/htmldemo.net/dorno/dorno/blog-sidebar.html"
+                            >blog</a>
+                        </li>
+                        <li>
+                          <a href="#">Show More <i class="fa fa-angle-down"></i></a>
+                          <ul class="sub_menu pages"> 
+                            <li><a href="/htmldemo.net/dorno/dorno/about.html">About Us</a></li>
+                            <li><a href="faq.html">Frequently Questions</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="/htmldemo.net/dorno/dorno/contact.html"> Contact Us</a></li>
+                        <li><a href="my-account.html"id="userAccount">My account</a></li>
+                      </ul>
+                    </nav>
+                  </div>
+                  <!--main menu end-->
+                </div>
+                <div class="col-lg-2">
+                  <div class="header_account_area">
+                   
+                    <div class="header_account-list mini_cart_wrapper">
+                      <a href="javascript:void(0)"
+                        ><i class="icon icon-FullShoppingCart"></i
+                        ><span class="item_count" id="numberOfSelectedItems"></span></a
+                      >
+                      <!--mini cart-->
+                      <div class="mini_cart" >
+                        <div class="cart_gallery" id="cartGallery">
+                          
+                        </div>
+                       
+                        <div class="mini_cart_footer">
+                          <div class="cart_button">
+                            <a href="/htmldemo.net/dorno/dorno/cart.html"
+                              ><i class="fa fa-shopping-cart"></i> View cart</a
+                            >
+                          </div>
+                          
+                        </div>
+                      </div>
+                      <!--mini cart end-->
+                    </div>
+                    <div class="header_account-list ">
+                      <a href="/batool/login.html" class="btn " id="login">Login</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!--header area end-->
+
+    <!--breadcrumbs area start-->
+    <div class="breadcrumbs_area">
+        <div class="container">   
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                       <h3>My Account</h3>
+                        <ul>
+                            <li><a href="/htmldemo.net/dorno/dorno/index.html">home</a></li>
+                            <li>My account</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>         
+    </div>
+    <!--breadcrumbs area end-->
+    
+   <!-- customer login start -->
+   <div class="customer_login">
+    <div class="container">
+        <div class="row">
+           <!--login area start-->
+           <div >
+                <div class="col-lg-7 col-md-9 " style="margin: 0 auto;">
+                    <div class="account_form">
+                        <h2 style="text-align: center;">login</h2>
+                        <div style="text-align: center;">
+                          <p>Are you admin? <a href="adminLogin.html"><span style="color: red;">Login</span></a></p>                                
+                      </div>
+                        <form action="#" id="LoginForm">
+                            <p>   
+                                <label> Email <span>*</span></label>
+                                <input type="text" name="Email" id="EmailLogin">
+                            </p>
+                            <p>   
+                                <label>Password <span>*</span></label>
+                                <input type="password" name="Password" id="PasswordLLogin">
+                            </p>   
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                              <div>
+                                  <a href="/htmldemo.net/dorno/dorno/OTPEmail.html">Lost your password?</a>
+                              </div>
+                              
+                          </div>
+                          
+                          <div style="text-align: center; margin-top: 10px;">
+                              <button type="submit" onclick="LoginUser()" class="login-btn">Login</button>
+                          </div>
+                          
+                          <div style="text-align: center; margin-top: 10px;">
+                              <button type="button" id="google-login-btn" class="google-button" onclick="LoginGoogle()">
+                                  <img src="https://pngimg.com/uploads/google/google_PNG19630.png" alt="Google logo" width="20" height="20">
+                                  Sign in with Google
+                              </button>
+                          </div>
+                          <br><br>
+                          
+                          <div style="text-align: center;">
+                            <p>Don't have an account? <a href="rejester.html"><span style="color: red;">Creat an account</span></a></p>                                
+                          </div>
+                          
+                        </form>
+
+                    </div>    
+                </div>
+            </div>
+            <!--login area start-->        
+        </div>
+    </div>    
+    </div>
+    <!-- ///////////////////////////////////////// -->
+  
+    <script type="module" src="loginGoogle.js" defer></script>
+    <script src="/htmldemo.net/dorno/dorno/JavaScript/login.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/htmldemo.net/dorno/dorno/JavaScript/navebar.js"></script>
+ 
+  </body>
+</html>
