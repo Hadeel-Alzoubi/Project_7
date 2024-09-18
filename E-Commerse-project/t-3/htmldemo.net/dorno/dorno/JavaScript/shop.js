@@ -124,7 +124,7 @@ $(document).ready(function () {
                                           element.productId
                                         }', '${element.name}', '${
           element.priceWithDiscount
-        }','${element.name}', '${element.image}')">Add to Cart</a>
+        }', '${element.image}')">Add to Cart</a>
                                     </div>
                                     <div class="swatches-colors">
                                         <ul>
@@ -639,7 +639,6 @@ async function addToCart(productId, name, price, image) {
       image: image,
     };
 
-    // Check if there is already a cart in localStorage
     let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
     // Check if the product is already in the cart

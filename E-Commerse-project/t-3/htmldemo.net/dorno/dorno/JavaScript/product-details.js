@@ -8,7 +8,7 @@ async function GetProductById() {
     return;
   }
 
-  const url = `https://localhost:44362/api/Products/GetProductByID/${productID}`;
+  const url = `https://localhost:44362/api/Products/GetProductByIDStars/${productID}`;
   const productContainer = document.getElementById("containerProductDetails");
 
   try {
@@ -18,6 +18,7 @@ async function GetProductById() {
     }
 
     const product = await response.json();
+    localStorage.setItem("CategorayID", product.product.categoryId);
     console.log(product);
 
     // Update the product details in the DOM
@@ -27,7 +28,11 @@ async function GetProductById() {
                     <div class="product-details-tab">
                         <div id="img-1" class="zoomWrapper single-zoom">
                             <a href="#">
-                                <img id="zoom1" src="/htmldemo.net/dorno/dorno/assets/img/product/${product.image}" data-zoom-image="assets/img/product/${product.image}" alt="${product.name}">
+                                <img id="zoom1" src="/htmldemo.net/dorno/dorno/assets/img/product/${
+                                  product.product.image
+                                }" data-zoom-image="assets/img/product/${
+      product.product.image
+    }" alt="${product.product.name}">
                             </a>
                         </div>
                         <div class="single-zoom-thumb">
@@ -38,7 +43,7 @@ async function GetProductById() {
                 <div class="col-lg-6 col-md-6">
                     <div class="product_d_right">
                        <form action="#">
-                            <h1><a href="#">${product.name}</a></h1>
+                            <h1><a href="#">${product.product.name}</a></h1>
                             <div class="product_nav">
                                 <ul>
                                     <li class="prev"><a href="#"><i class="fa fa-angle-left"></i></a></li>
@@ -46,16 +51,23 @@ async function GetProductById() {
                                 </ul>
                             </div>
                             <div class="product_ratting">
+                            
                                 <ul>
-                                    <li class="review"><a href="#"> (${product.reviews} customer reviews) </a></li>
+                                    <li class="review"><a href="#"> ${generateStars(
+                                      product.stars
+                                    )} </a></li>
                                 </ul>
                             </div>
                             <div class="price_box">
-                                <span class="current_price">$${product.priceWithDiscount}</span>
-                                <span class="old_price">$${product.price}</span>
+                                <span class="current_price">$${
+                                  product.product.priceWithDiscount
+                                }</span>
+                                <span class="old_price">$${
+                                  product.product.price
+                                }</span>
                             </div>
                             <div class="product_desc">
-                                <p>${product.description}</p>
+                                <p>${product.product.description}</p>
                             </div>
                             <div class="product_variant color">
                                 <h3>Available Options</h3>
@@ -64,8 +76,14 @@ async function GetProductById() {
                             </div>
                             <div class="product_variant quantity">
                                 <label>quantity</label>
-                                <input min="1" max="100" value="1" type="number" id="quantity-${product.productId}">
-                                <button class="button" onclick="addToCart('${product.productId}', '${product.name}', '${product.priceWithDiscount}','${product.image}')">add to cart</button>  
+                                <input min="1" max="100" value="1" type="number" id="quantity-${
+                                  product.product.productId
+                                }">
+                                <button class="button" onclick="addToCart('${
+                                  product.product.productId
+                                }', '${product.product.name}', '${
+      product.product.priceWithDiscount
+    }','${product.product.image}')">add to cart</button>  
 
                               
                             </div>
@@ -76,7 +94,9 @@ async function GetProductById() {
                                 </ul>
                             </div>
                             <div class="product_meta">
-                                <span>Category: <a href="#">${product.category}</a></span>
+                                <span>Category: <a href="#">${
+                                  product.product.category
+                                }</a></span>
                             </div>
                         </form>
                         <div class="priduct_social">
@@ -108,16 +128,17 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 async function submitComment(productID) {
+  debugger;
   const author = document.getElementById("author").value;
   const email = document.getElementById("email").value;
   const commentText = document.getElementById("review_comment").value;
-  //const rating = document.querySelector('.product_ratting ul .selected').length;
+  const rating = document.getElementById("star-rating").value;
   event.preventDefault();
   const comment = {
     UserId: UserId,
     ProductId: localStorage.getItem("selectedProductId"),
     Comment1: commentText,
-    Rating: 0,
+    Rating: rating,
     Status: "pending",
   };
   debugger;
@@ -265,5 +286,98 @@ async function addToCart(productId, name, price, image) {
     window.location.reload();
   }
 }
+async function showProductByCategoryID(e) {
+  debugger;
+  const url = `https://localhost:44362/api/Products/GetProductByCategoryID${e}`;
 
+  try {
+    let response = await fetch(url);
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    let data = await response.json();
+
+    if ($(".product_carousel").hasClass("owl-carousel")) {
+      $(".product_carousel").trigger("destroy.owl.carousel");
+      $(".product_carousel").html("");
+    }
+
+    let productsHtml = "";
+    data.forEach((product) => {
+      productsHtml += `
+                    <div class="col-lg-3 single_product" data-product-id="${
+                      product.productId
+                    }" > <!-- Add product ID here -->
+                        <article class="single_product">
+                            <figure>
+                                <div class="product_thumb">
+                                    <div class="label_product">
+                                        <span class="label_new">new</span>
+                                    </div>
+                                    <a class="primary_img" href="product-details.html"onclick="storeProductId(${
+                                      product.productId
+                                    })"><img src="/htmldemo.net/dorno/dorno/assets/img/product/${
+        product.image
+      }" alt="${product.name}"></a>
+                                    <a class="secondary_img" href="product-details.html" onclick="storeProductID(${
+                                      product.productId
+                                    })"><img src="/htmldemo.net/dorno/dorno/assets/img/product/${
+        product.image
+      }" alt="${product.name}"></a>
+                                    <div class="action_links">
+                                        <ul>
+                                            <li class="quick_button"><a href="#" data-bs-toggle="modal" data-bs-target="#modal_box" title="quick view"><i class="icon icon-Eye" onclick="showProductsdetail(${
+                                              product.productId
+                                            })"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <figcaption class="product_content">
+                                    <div class="product_rating">
+                                        <ul>
+                                            <li><a href="#"><i class="icon icon-Star"></i></a></li>
+                                            <li><a href="#"><i class="icon icon-Star"></i></a></li>
+                                            <li><a href="#"><i class="icon icon-Star"></i></a></li>
+                                            <li><a href="#"><i class="icon icon-Star"></i></a></li>
+                                            <li><a href="#"><i class="icon icon-Star"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <h4 class="product_name"><a href="product-details.html">${
+                                      product.name
+                                    }</a></h4>
+                                    <div class="price_box">
+                                        <span class="current_price">$${
+                                          product.price
+                                        }</span>
+                                        ${
+                                          product.priceWithDiscount
+                                            ? `<span class="old_price">$${product.priceWithDiscount}</span>`
+                                            : ""
+                                        }
+                                    </div>
+                                    <div class="add_to_cart">
+                                        <a href="cart.html" title="Add to cart">Add to Cart</a>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </article>
+                    </div>
+                `;
+    });
+
+    $(".product_carousel").html(productsHtml);
+
+    $(".product_carousel").owlCarousel({
+      items: 4,
+      loop: true,
+      margin: 10,
+      nav: true,
+      dots: false,
+      autoplay: true,
+    });
+  } catch (error) {
+    console.error("Error fetching products:", error);
+  }
+}
+showProductByCategoryID(localStorage.getItem("CategorayID"));
 ///////////////////////////////////////////////////////////////////////////////////////////////////////

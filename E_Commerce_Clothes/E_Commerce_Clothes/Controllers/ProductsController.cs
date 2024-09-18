@@ -30,8 +30,30 @@ namespace E_Commerce_Clothes.Controllers
             var product = _dbContext.Products.Find(id);
             if (product == null) { return NotFound("No product found."); }
 
+
+
+
             return Ok(product);
         }
+
+        [HttpGet("GetProductByIDStars/{id}")]
+        public IActionResult GetProductByIDStars(int id)
+        {
+            if (id <= 0) { return BadRequest(); }
+            var product = _dbContext.Products.Find(id);
+            if (product == null) { return NotFound("No product found."); }
+
+            var checkComment = _dbContext.Comments.Where(p => p.ProductId == id);
+
+            var stars = 0;
+            if (checkComment != null && checkComment.Any())
+            {
+                stars = checkComment.Sum(p => p.Rating ?? 0) / checkComment.Count();
+            }
+
+            return Ok(new { product, stars });
+        }
+
         [HttpGet("GetProductByCategoryID{id:int}")]
         public IActionResult GetProductByCategoryID(int id)
         {

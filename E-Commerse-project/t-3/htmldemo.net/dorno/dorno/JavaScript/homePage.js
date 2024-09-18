@@ -69,8 +69,6 @@ $(document).ready(function () {
                                             <li class="quick_button"><a href="#" data-bs-toggle="modal" data-bs-target="#modal_box" title="quick view"><i class="icon icon-Eye" onclick="showProductsdetail(${
                                               product.productId
                                             })"></i></a></li>
-                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon icon-Heart"></i></a></li>
-                                            <li class="compare"><a href="#" title="Add to Compare"><i class="icon icon-MusicMixer"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -145,7 +143,7 @@ async function showProductsdetail(e) {
     $("#modal_box .modal_tab_button .nav").html(`
           <li>
               <a class="nav-link active" data-bs-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">
-                  <img src="/htmldemo.net/dorno/dorno/assets/img/product/${product.image}" alt="${product.name}">
+                  <img src="/htmldemo.net/dorno/dorno/assets/img/product/${product.image}" alt="${product.name}"onclick="storeProductId(${product.productId})">
               </a>
           </li>
       `);
@@ -154,7 +152,7 @@ async function showProductsdetail(e) {
     $("#modal_box .product-details-large").html(`
           <div class="tab-pane fade show active" id="tab1" role="tabpanel">
               <div class="modal_tab_img">
-                  <a href="#"><img src="/assets/img/product/${product.image}" alt="${product.name}"></a>    
+                  <a href="#"><img src="/assets/img/product/${product.image}" alt="${product.name}"onclick="storeProductId(${product.productId})"></a>    
               </div>
           </div>
       `);
@@ -210,8 +208,6 @@ async function showProductByCategoryID(e) {
                                             <li class="quick_button"><a href="#" data-bs-toggle="modal" data-bs-target="#modal_box" title="quick view"><i class="icon icon-Eye" onclick="showProductsdetail(${
                                               product.productId
                                             })"></i></a></li>
-                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="icon icon-Heart"></i></a></li>
-                                            <li class="compare"><a href="#" title="Add to Compare"><i class="icon icon-MusicMixer"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -347,7 +343,7 @@ async function showItemsCart() {
       miniCart.innerHTML += `
       <div class="cart_item">
             <div class="cart_img">
-                <a href="#"><img src="/htmldemo.net/dorno/dorno/assets/img/product/${item.image}" alt=""/></a>
+                <a href="#"><img src="/htmldemo.net/dorno/dorno/assets/img/product/${item.image}" alt=""/onclick="storeProductId(${product.productId})"></a>
             </div>
                           <div class="cart_info">
                             <a href="#"
@@ -378,7 +374,7 @@ async function showItemsCart() {
       miniCart.innerHTML += `
       <div class="cart_item">
             <div class="cart_img">
-                 <a href="#"><img src="/htmldemo.net/dorno/dorno/assets/img/product/${item.product.image}" alt=""/></a>
+                 <a href="#"><img src="/htmldemo.net/dorno/dorno/assets/img/product/${item.product.image}" alt=""onclick="storeProductId(${product.productId})"/></a>
             </div>
                           <div class="cart_info">
                             <a href="#"
@@ -410,6 +406,7 @@ showItemsCart();
 // }
 function storeProductId(productId) {
   debugger;
+  localStorage.setItem("selectedProductId", "");
   localStorage.setItem("selectedProductId", productId);
   console.log("Product ID stored in localStorage:", productId);
 }

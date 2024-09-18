@@ -38,7 +38,7 @@
     <link rel="stylesheet" href="assets/css/slinky.menu.css" />
     <!--plugins css-->
     <link rel="stylesheet" href="assets/css/plugins.css" />
-
+<link rel="stylesheet" href="assets/css/star-rating.min.css">
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="assets/css/style.css" />
 
@@ -303,23 +303,13 @@
                     </div>
                     <div class="product_ratting mb-10">
                       <h3>Your rating</h3>
-                      <ul id="rating-stars">
-                        <li>
-                          <a href="#" data-value="1"><i class="icon icon-Star"></i></a>
-                        </li>
-                        <li>
-                          <a href="#" data-value="2"><i class="icon icon-Star"></i></a>
-                        </li>
-                        <li>
-                          <a href="#" data-value="3"><i class="icon icon-Star"></i></a>
-                        </li>
-                        <li>
-                          <a href="#" data-value="4"><i class="icon icon-Star"></i></a>
-                        </li>
-                        <li>
-                          <a href="#" data-value="5"><i class="icon icon-Star"></i></a>
-                        </li>
-                      </ul>
+                      <select id="star-rating">
+                        <option value="5">Excellent</option>
+                        <option value="4">Very Good</option>
+                        <option value="3">Average</option>
+                        <option value="2">Poor</option>
+                        <option value="1">Terrible</option>
+                      </select>
                     </div>
                     
                     <div class="product_review_form">
@@ -1460,8 +1450,12 @@
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="JavaScript/star-rating.min.js"></script>
 
     <script src="JavaScript/navebar.js"></script>
+    <script>
+      let stars = new StarRating("#star-rating");
+    </script>
 
     <!-- 
 <script>

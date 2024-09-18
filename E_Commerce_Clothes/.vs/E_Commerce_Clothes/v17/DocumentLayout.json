@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Orange\\Desktop\\E_Commerce_Clothes\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{866D787C-BA21-44DB-B07B-372137316366}|E_Commerce_Clothes\\E_Commerce_Clothes.csproj|c:\\users\\orange\\desktop\\e_commerce_clothes\\e_commerce_clothes\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{866D787C-BA21-44DB-B07B-372137316366}|E_Commerce_Clothes\\E_Commerce_Clothes.csproj|solutionrelative:e_commerce_clothes\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{866D787C-BA21-44DB-B07B-372137316366}|E_Commerce_Clothes\\E_Commerce_Clothes.csproj|c:\\users\\orange\\desktop\\e_commerce_clothes\\e_commerce_clothes\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{866D787C-BA21-44DB-B07B-372137316366}|E_Commerce_Clothes\\E_Commerce_Clothes.csproj|solutionrelative:e_commerce_clothes\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{866D787C-BA21-44DB-B07B-372137316366}|E_Commerce_Clothes\\E_Commerce_Clothes.csproj|c:\\users\\orange\\desktop\\e_commerce_clothes\\e_commerce_clothes\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{866D787C-BA21-44DB-B07B-372137316366}|E_Commerce_Clothes\\E_Commerce_Clothes.csproj|solutionrelative:e_commerce_clothes\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,15 +26,27 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ProductsController.cs",
-              "DocumentMoniker": "C:\\Users\\Orange\\Desktop\\E_Commerce_Clothes\\E_Commerce_Clothes\\Controllers\\ProductsController.cs",
-              "RelativeDocumentMoniker": "E_Commerce_Clothes\\Controllers\\ProductsController.cs",
-              "ToolTip": "C:\\Users\\Orange\\Desktop\\E_Commerce_Clothes\\E_Commerce_Clothes\\Controllers\\ProductsController.cs",
-              "RelativeToolTip": "E_Commerce_Clothes\\Controllers\\ProductsController.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAAwB8AAAAAAAAA",
+              "DocumentIndex": 1,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\Orange\\Desktop\\E_Commerce_Clothes\\E_Commerce_Clothes\\Models\\User.cs",
+              "RelativeDocumentMoniker": "E_Commerce_Clothes\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\Orange\\Desktop\\E_Commerce_Clothes\\E_Commerce_Clothes\\Models\\User.cs",
+              "RelativeToolTip": "E_Commerce_Clothes\\Models\\User.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAALAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-12T13:44:49.938Z",
+              "WhenOpened": "2024-09-17T22:50:44.241Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\Orange\\Desktop\\E_Commerce_Clothes\\E_Commerce_Clothes\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "E_Commerce_Clothes\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\Orange\\Desktop\\E_Commerce_Clothes\\E_Commerce_Clothes\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "E_Commerce_Clothes\\Controllers\\UsersController.cs",
+              "ViewState": "AQIAAF8AAAAAAAAAAAAAAF8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T20:43:36.653Z",
               "EditorCaption": ""
             }
           ]
